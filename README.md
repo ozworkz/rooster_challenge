@@ -16,7 +16,7 @@ This repo contains a solution for detecting rooster sounds from audio files.
 
   - For transfer learning purposes, I used resnest model which was also provided good results in Kaggle's bird call classification competition https://www.kaggle.com/c/birdsong-recognition . The weights I used in the training can found in the repo. 
 
- - There are two modes of training; **train_with_birdcall** and **continue2train** . If train_with_birdcall is configured on **train_conf.yaml** file, then set weights option in train_conf.yaml as **resnet_bird_call**. If continue2train is chosen for training mode, you can set any of the output weights; **best_loss**, **best_accuracy** or **final**.
+ - There are two modes of training; **train_with_birdcall** and **continue2train** . If **train_with_birdcall** is configured on **train_conf.yaml** file, then set weights option in **train_conf.yaml** as **resnet_bird_call**. If **continue2train** is chosen for training mode, you can set any of the output weights; **best_loss**, **best_accuracy** or **final**.
  
 
 2. Run **train.py** file to start training. Optionally you can adjust training settings(number of epochs, batch_size, ...) in **train_conf.yaml** file.  
