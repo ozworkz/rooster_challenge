@@ -1,0 +1,62 @@
+# Configuration for training rooster dataset
+
+globals:
+  seed: 1213
+  device: cuda
+  num_epochs: 23
+  output_dir: training_output
+  use_fold: 0
+  target_sr: 44100
+  period: 0.5
+
+dataset:
+  name: SpectrogramDataset
+  params:
+    img_size: 224
+    melspectrogram_parameters:
+      n_mels: 128
+      fmin: 20
+      fmax: 16000
+
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: True
+
+loader:
+  train:
+    batch_size: 20
+    shuffle: True
+    num_workers: 1
+    pin_memory: True
+    drop_last: True
+  val:
+    batch_size: 8
+    shuffle: False
+    num_workers: 1
+    pin_memory: True
+    drop_last: False
+
+model:
+  name: resnest50_fast_1s1x64d
+  mode: continue2train # other option: train_with_birdcall (if train_with_birdcall, then weights need to be resnet_bird_call
+  weights: best_rooster4 #resnet_bird_call
+  params:
+    pretrained: True
+
+loss:
+  name: BCELoss
+  params: {}
+
+optimizer:
+  name: RMSprop
+  params:
+    lr: 0.001
+
+scheduler:
+  name: CosineAnnealingLR
+  params:
+    T_max: 10
+

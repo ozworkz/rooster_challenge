@@ -1,0 +1,6 @@
+#dependencies
+venv
+not_used_weights
+dataset
+utils/__pycache__
+.idea

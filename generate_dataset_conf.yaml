@@ -1,0 +1,5 @@
+set:
+  all: 1
+  rooster: 0
+  background: 0
+n_sample_coef: 4
