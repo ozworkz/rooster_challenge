@@ -43,6 +43,6 @@ for index, rooster in standings.iterrows():
     print(rank, ":", int(rooster["rooster_id"]))
     rank += 1
 
-#print("All prediction data")
-#print(prediction)
+print("All prediction data")
+print(prediction)
 #print(standings)
