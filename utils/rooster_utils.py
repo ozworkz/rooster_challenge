@@ -21,6 +21,7 @@ import torch.nn.functional as F
 import torch.utils.data as data
 import resnest.torch as resnest_torch
 import pandas as pd
+import sys
 
 
 def load_configurations(mode="train"):
@@ -189,7 +190,10 @@ def get_model(args: tp.Dict):
 
     if(mode == "detector" or mode =="continue2train"):
         #print(f"Model configuration mode: {mode}")
-        model.load_state_dict(torch.load(weigths_path), strict=True)
+        if os.path.exists(weigths_path):
+            model.load_state_dict(torch.load(weigths_path), strict=True)
+        else:
+            sys.exit(f"Weight file {weigths_path} can't be found\nYou can download weights from https://drive.google.com/drive/folders/1BrarBYMUH1V4qlMMzU_dT6WQqPhj9J6q")
 
     return model
 
